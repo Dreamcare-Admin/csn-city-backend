@@ -35,7 +35,6 @@ const ACPRoutes = require("./routes/acp-routes");
 const FormerCPRoutes = require("./routes/former-cp-routes");
 const MedalWinnerRoutes = require("./routes/medal-winner-routes");
 const RegionRoutes = require("./routes/region-routes");
-const captchaRoutes = require("./routes/captcha-routes");
 const chatbotVisitorRoutes = require("./routes/chatbot-visitor-routes");
 
 require("dotenv").config();
@@ -47,7 +46,9 @@ app.set('trust proxy', true);
 
 const allowedOrigins = [
   "http://localhost:3000",
+  "https://csn-city.vercel.app",
 ];
+
 
 // Set up CORS options
 const corsOptions = {
@@ -95,7 +96,6 @@ app.use("/api", ACPRoutes);
 app.use("/api", FormerCPRoutes);
 app.use("/api", MedalWinnerRoutes);
 app.use("/api", RegionRoutes);
-app.use("/api", captchaRoutes);
 app.use("/api/chatbot-visitor", chatbotVisitorRoutes);
 
 app.use((req, res, next) => {
