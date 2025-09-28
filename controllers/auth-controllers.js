@@ -36,7 +36,7 @@ const generateOTP = () => {
 };
 
 const verifyOtp = async (req, res) => {
-  const { email, otp } = req.body;
+  const { email, otp, deviceInfo } = req.body;
 
   try {
     const user = await User.findOne({ email: email });
@@ -65,17 +65,28 @@ const verifyOtp = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    // If there's an existing active token, add it to blacklisted tokens
-    if (user.activeToken) {
-      user.blacklistedTokens.push(user.activeToken);
-      // Keep only the last 10 blacklisted tokens
-      if (user.blacklistedTokens.length > 10) {
-        user.blacklistedTokens = user.blacklistedTokens.slice(-10);
-      }
+    // Add the new token to active tokens (allow multiple sessions)
+    const newSession = {
+      token: token,
+      deviceInfo: deviceInfo || {},
+      createdAt: new Date()
+    };
+
+    // Initialize activeTokens array if it doesn't exist
+    if (!user.activeTokens) {
+      user.activeTokens = [];
     }
 
-    // Set the new token as active
-    user.activeToken = token;
+    // Add the new session
+    user.activeTokens.push(newSession);
+
+    // Optional: Limit the number of concurrent sessions (e.g., max 5 sessions)
+    const maxSessions = 5;
+    if (user.activeTokens.length > maxSessions) {
+      // Remove the oldest session
+      user.activeTokens = user.activeTokens.slice(-maxSessions);
+    }
+
     await user.save();
 
     res.json({
@@ -83,6 +94,7 @@ const verifyOtp = async (req, res) => {
       token: token,
       role: user.role,
       psId: user.psId,
+      sessionExpired: false // No session expiration for multiple logins
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: "Something went wrong" });
@@ -132,13 +144,14 @@ const verifyToken = async (req, res) => {
         });
       }
 
-      // Check if this is the active token
-      if (currentUser.activeToken !== token) {
+      // Check if this token is in the active tokens array (support multiple sessions)
+      const activeSession = currentUser.activeTokens?.find(session => session.token === token);
+      if (!activeSession) {
         return res.status(401).json({
           verified: false,
-          message: "Session expired. Another login was detected.",
+          message: "Session not found or expired.",
           shouldLogout: true,
-          reason: "new_login"
+          reason: "session_not_found"
         });
       }
 

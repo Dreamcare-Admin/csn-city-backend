@@ -70,6 +70,15 @@ const verifyTokenMiddleware = async (req, res, next) => {
         });
       }
 
+      // Check if this token is in the active tokens array (support multiple sessions)
+      const activeSession = currentUser.activeTokens?.find(session => session.token === token);
+      if (!activeSession) {
+        return res.status(401).json({
+          success: false,
+          message: "Session not found or expired. Please log in again.",
+        });
+      }
+
       // Check if the password has changed after the token was issued
       if (currentUser.passwordChangedAt) {
         const changedTimestamp = parseInt(

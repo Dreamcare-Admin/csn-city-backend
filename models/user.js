@@ -12,7 +12,16 @@ const userSchema = new Schema(
     mobile_no: { type: String },
     otp: { type: String },
     passwordChangedAt: { type: Date },
-    activeToken: { type: String, default: null }, // Store the current active token
+    activeTokens: [{ 
+      token: { type: String },
+      deviceInfo: {
+        userAgent: { type: String },
+        platform: { type: String },
+        language: { type: String },
+        ipAddress: { type: String }
+      },
+      createdAt: { type: Date, default: Date.now }
+    }], // Store multiple active tokens for concurrent sessions
     blacklistedTokens: [{ type: String }], // Store previously invalidated tokens
     psId: {
       type: mongoose.Schema.Types.ObjectId,
