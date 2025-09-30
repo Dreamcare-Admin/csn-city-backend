@@ -11,7 +11,6 @@ const multer = require("multer"); // For handling file uploads
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const Martyrs = require("../models/Martyrs");
-const Group = require("../models/Group");
 
 require("dotenv").config();
 
