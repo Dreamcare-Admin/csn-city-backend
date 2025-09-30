@@ -72,8 +72,8 @@ const corsOptions = {
     }
   },
   credentials: true, // Allow cookies and authentication headers
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'], // Allowed headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'x-salt-value'], // Allowed headers including custom x-salt-value
   exposedHeaders: ['Content-Range', 'X-Content-Range'], // Headers that browsers are allowed to access
   maxAge: 86400, // Cache preflight requests for 24 hours
   optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
