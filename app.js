@@ -58,6 +58,7 @@ const corsOptions = {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true); // Allow the request
     } else {
+      console.log(`CORS blocked origin: ${origin}`);
       callback(new Error("Not allowed by CORS")); // Deny the request
     }
   },
@@ -66,11 +67,13 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'], // Allowed headers
   exposedHeaders: ['Content-Range', 'X-Content-Range'], // Headers that browsers are allowed to access
   maxAge: 86400, // Cache preflight requests for 24 hours
-  optionsSuccessStatus: 200 // Some legacy browsers (IE11) choke on 204
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
+  preflightContinue: false
 };
 
-app.use(bodyParser.json());
+// Apply CORS before body parser
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
 
 app.disable("x-powered-by");
 app.disable("etag");
