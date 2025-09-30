@@ -36,7 +36,7 @@ const generateOTP = () => {
 };
 
 const verifyOtp = async (req, res) => {
-  const { email, otp, deviceInfo } = req.body;
+  const { email, deviceInfo } = req.body;
 
   try {
     const user = await User.findOne({ email: email });
@@ -44,10 +44,6 @@ const verifyOtp = async (req, res) => {
     if (!user) {
       return res.status(401).json({ success: false, message: "User not found" });
     }
-
-    // if (user.otp !== otp) {
-    //   return res.status(401).json({ success: false, message: "Invalid OTP" });
-    // }
 
     // Clear the OTP after successful verification
     user.otp = null;

@@ -47,6 +47,7 @@ app.set('trust proxy', true);
 const allowedOrigins = [
   "http://localhost:3000",
   "https://csn-city.vercel.app",
+  "https://csncity.mahapolice.gov.in",
 ];
 
 
@@ -57,9 +58,15 @@ const corsOptions = {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true); // Allow the request
     } else {
-      callback("Not allowed by CORS"); // Deny the request.
+      callback(new Error("Not allowed by CORS")); // Deny the request
     }
   },
+  credentials: true, // Allow cookies and authentication headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'], // Allowed headers
+  exposedHeaders: ['Content-Range', 'X-Content-Range'], // Headers that browsers are allowed to access
+  maxAge: 86400, // Cache preflight requests for 24 hours
+  optionsSuccessStatus: 200 // Some legacy browsers (IE11) choke on 204
 };
 
 app.use(bodyParser.json());
