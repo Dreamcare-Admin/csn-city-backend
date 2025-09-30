@@ -72,7 +72,7 @@ const corsOptions = {
     }
   },
   credentials: true, // Allow cookies and authentication headers
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Allowed HTTP methods
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'], // Allowed headers
   exposedHeaders: ['Content-Range', 'X-Content-Range'], // Headers that browsers are allowed to access
   maxAge: 86400, // Cache preflight requests for 24 hours
@@ -91,6 +91,7 @@ app.use(bodyParser.json());
 app.disable("x-powered-by");
 app.disable("etag");
 
+app.use("/api", authRoutes);
 app.use("/api", mainRoutes);
 app.use("/api", alertwallRoutes);
 app.use("/api", SeniorOfficerRoutes);
@@ -100,7 +101,6 @@ app.use("/api", policeStationRoutes);
 app.use("/api", psOfficerRoutes);
 app.use("/api", GeneralRoutes);
 app.use("/api", UserRoutes);
-app.use("/api", authRoutes);
 app.use("/api", spMessageRoutes);
 app.use("/api", headlineRoutes);
 app.use("/api", usefulwebRoutes);
