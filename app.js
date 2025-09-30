@@ -36,6 +36,7 @@ const FormerCPRoutes = require("./routes/former-cp-routes");
 const MedalWinnerRoutes = require("./routes/medal-winner-routes");
 const RegionRoutes = require("./routes/region-routes");
 const chatbotVisitorRoutes = require("./routes/chatbot-visitor-routes");
+const MartyrsRoutes = require("./routes/martyrs-routes");
 
 require("dotenv").config();
 
@@ -106,6 +107,7 @@ app.use("/api", ACPRoutes);
 app.use("/api", FormerCPRoutes);
 app.use("/api", MedalWinnerRoutes);
 app.use("/api", RegionRoutes);
+app.use("/api", MartyrsRoutes);
 app.use("/api/chatbot-visitor", chatbotVisitorRoutes);
 
 app.use((req, res, next) => {
