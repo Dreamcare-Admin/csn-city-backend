@@ -47,16 +47,24 @@ app.set('trust proxy', true);
 
 const allowedOrigins = [
   "http://localhost:3000",
+  "http://localhost:3001",
   "https://csn-city.vercel.app",
   "https://csncity.mahapolice.gov.in",
+  "http://csncity.mahapolice.gov.in",
 ];
 
 
 // Set up CORS options
 const corsOptions = {
   origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman, etc.)
+    if (!origin) {
+      return callback(null, true);
+    }
+
     // Check if the origin is in the list of allowed origins
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      console.log(`CORS allowed origin: ${origin}`);
       callback(null, true); // Allow the request
     } else {
       console.log(`CORS blocked origin: ${origin}`);
@@ -74,6 +82,10 @@ const corsOptions = {
 
 // Apply CORS before body parser
 app.use(cors(corsOptions));
+
+// Handle preflight requests explicitly
+app.options('*', cors(corsOptions));
+
 app.use(bodyParser.json());
 
 app.disable("x-powered-by");
