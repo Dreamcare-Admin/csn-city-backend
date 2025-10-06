@@ -45,49 +45,50 @@ const app = express();
 // Trust proxy configuration for proper IP detection behind load balancers/proxies
 app.set('trust proxy', true);
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://csn-city.vercel.app",
+const allowed = new Set([
   "https://csncity.mahapolice.gov.in",
   "http://csncity.mahapolice.gov.in",
-  "https://65.0.22.109",  
+  "https://csn-city.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:3001",
+  // Temporary while hitting the server by IP; remove later
+  "https://65.0.22.109",
   "http://65.0.22.109",
-];
+]);
 
-
-
-// Set up CORS options
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, Postman, etc.)
-    if (!origin) {
-      return callback(null, true);
-    }
+  credentials: true,
+  methods: ["GET","POST","PUT","DELETE","PATCH","OPTIONS"],
+  allowedHeaders: [
+    "Content-Type","Authorization","X-Requested-With","Accept","Origin","x-salt-value"
+  ],
+  exposedHeaders: ["Content-Range","X-Content-Range"],
+  maxAge: 86400,
+  origin: (origin, cb) => {
+    if (!origin) return cb(null, true); // curl/postman/same-origin
 
-    // Check if the origin is in the list of allowed origins
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      console.log(`CORS allowed origin: ${origin}`);
-      callback(null, true); // Allow the request
-    } else {
-      console.log(`CORS blocked origin: ${origin}`);
-      callback(new Error("Not allowed by CORS")); // Deny the request
-    }
+    try {
+      const u = new URL(origin);
+      const isDefault =
+        (u.protocol === "https:" && (u.port === "" || u.port === "443")) ||
+        (u.protocol === "http:"  && (u.port === "" || u.port === "80"));
+
+      const normalized = `${u.protocol}//${u.hostname}${isDefault ? "" : `:${u.port}`}`;
+
+      if (allowed.has(normalized) || allowed.has(`${u.protocol}//${u.hostname}`)) {
+        console.log("CORS allowed origin:", origin);
+        return cb(null, true);
+      }
+    } catch (_) { /* fallthrough */ }
+
+    console.log("CORS blocked origin:", origin);
+    return cb(new Error("Not allowed by CORS"));
   },
-  credentials: true, // Allow cookies and authentication headers
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'x-salt-value'], // Allowed headers including custom x-salt-value
-  exposedHeaders: ['Content-Range', 'X-Content-Range'], // Headers that browsers are allowed to access
-  maxAge: 86400, // Cache preflight requests for 24 hours
-  optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
-  preflightContinue: false
 };
 
-// Apply CORS before body parser
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // keep preflight
 
-// Handle preflight requests explicitly
-app.options('*', cors(corsOptions));
 
 app.use(bodyParser.json());
 
