@@ -51,7 +51,10 @@ const allowedOrigins = [
   "https://csn-city.vercel.app",
   "https://csncity.mahapolice.gov.in",
   "http://csncity.mahapolice.gov.in",
+  "https://65.0.22.109",  
+  "http://65.0.22.109",
 ];
+
 
 
 // Set up CORS options
