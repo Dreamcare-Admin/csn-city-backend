@@ -1,0 +1,348 @@
+{
+    "existing_users": [
+        {
+            "note": "ALREADY IN DATABASE - DO NOT SEED",
+            "email": "csncitypolice@gmail.com",
+            "password_hash": "15672146cdca6ebc43ea37d690abfd9ce13ba48ee0a4c01872077b5d9501aeb3",
+            "mobile_no": null,
+            "role": "admin"
+        },
+        {
+            "note": "ALREADY IN DATABASE - DO NOT SEED",
+            "email": "admin@dcd.com",
+            "password_hash": "$2a$12$VgP2IUUzHrfEZFVd1W7V0OIuHXlp786WDp/z43FPw38Qc8foQuCOO",
+            "mobile_no": null,
+            "role": "admin"
+        }
+    ],
+    "users_to_seed": [
+        {
+            "sr_no": 1,
+            "office_name": "DCP (Zone-1)",
+            "email": "dcp.zone1@csnpolice.gov.in",
+            "mobile_no": "9226514003",
+            "role": "admin",
+            "default_password": "DcpZone1@2024"
+        },
+        {
+            "sr_no": 2,
+            "office_name": "DCP (Zone-2)",
+            "email": "dcp.zone2@csnpolice.gov.in",
+            "mobile_no": "9226514004",
+            "role": "admin",
+            "default_password": "DcpZone2@2024"
+        },
+        {
+            "sr_no": 3,
+            "office_name": "DCP (Crime)",
+            "email": "dcp.crime@csnpolice.gov.in",
+            "mobile_no": "9226514048",
+            "role": "admin",
+            "default_password": "DcpCrime@2024"
+        },
+        {
+            "sr_no": 4,
+            "office_name": "DCP (HQ)",
+            "email": "dcp.hq@csnpolice.gov.in",
+            "mobile_no": "9226514002",
+            "role": "admin",
+            "default_password": "DcpHq@2024"
+        },
+        {
+            "sr_no": 5,
+            "office_name": "ACP (Chawani)",
+            "email": "acp.chawani@csnpolice.gov.in",
+            "mobile_no": "9226514009",
+            "role": "admin",
+            "default_password": "AcpChawani@2024"
+        },
+        {
+            "sr_no": 6,
+            "office_name": "ACP (City)",
+            "email": "acp.city@csnpolice.gov.in",
+            "mobile_no": "9226514008",
+            "role": "admin",
+            "default_password": "AcpCity@2024"
+        },
+        {
+            "sr_no": 7,
+            "office_name": "ACP (Cidco)",
+            "email": "acp.cidco@csnpolice.gov.in",
+            "mobile_no": "9226514010",
+            "role": "admin",
+            "default_password": "AcpCidco@2024"
+        },
+        {
+            "sr_no": 8,
+            "office_name": "ACP (Osmanpura)",
+            "email": "acp.osmanpura@csnpolice.gov.in",
+            "mobile_no": "9226514011",
+            "role": "admin",
+            "default_password": "AcpOsmanpura@2024"
+        },
+        {
+            "sr_no": 9,
+            "office_name": "ACP (Crime)",
+            "email": "acp.crime@csnpolice.gov.in",
+            "mobile_no": "9226514005",
+            "role": "admin",
+            "default_password": "AcpCrime@2024"
+        },
+        {
+            "sr_no": 10,
+            "office_name": "ACP (Special Branch)",
+            "email": "acp.specialbranch@csnpolice.gov.in",
+            "mobile_no": "9226514007",
+            "role": "admin",
+            "default_password": "AcpSpecialBranch@2024"
+        },
+        {
+            "sr_no": 11,
+            "office_name": "ACP (Admin)",
+            "email": "acp.admin@csnpolice.gov.in",
+            "mobile_no": "9226514006",
+            "role": "admin",
+            "default_password": "AcpAdmin@2024"
+        },
+        {
+            "sr_no": 12,
+            "office_name": "PS. Chawni",
+            "email": "ps.chawni@csnpolice.gov.in",
+            "mobile_no": "9226514026",
+            "role": "user",
+            "default_password": "PsChawni@2024"
+        },
+        {
+            "sr_no": 13,
+            "office_name": "PS. Waluj",
+            "email": "ps.waluj@csnpolice.gov.in",
+            "mobile_no": "9226514027",
+            "role": "user",
+            "default_password": "PsWaluj@2024"
+        },
+        {
+            "sr_no": 14,
+            "office_name": "PS. Midc Waluj",
+            "email": "ps.midcwaluj@csnpolice.gov.in",
+            "mobile_no": "9226514028",
+            "role": "user",
+            "default_password": "PsMidcWaluj@2024"
+        },
+        {
+            "sr_no": 15,
+            "office_name": "PS. Daultabad",
+            "email": "ps.daultabad@csnpolice.gov.in",
+            "mobile_no": "9226514030",
+            "role": "user",
+            "default_password": "PsDaultabad@2024"
+        },
+        {
+            "sr_no": 16,
+            "office_name": "PS. Citychowk",
+            "email": "ps.citychowk@csnpolice.gov.in",
+            "mobile_no": "9226514024",
+            "role": "user",
+            "default_password": "PsCitychowk@2024"
+        },
+        {
+            "sr_no": 17,
+            "office_name": "PS. Krantichowk",
+            "email": "ps.krantichowk@csnpolice.gov.in",
+            "mobile_no": "9226514025",
+            "role": "user",
+            "default_password": "PsKrantichowk@2024"
+        },
+        {
+            "sr_no": 18,
+            "office_name": "PS. Begampura",
+            "email": "ps.begampura@csnpolice.gov.in",
+            "mobile_no": "9226514029",
+            "role": "user",
+            "default_password": "PsBegampura@2024"
+        },
+        {
+            "sr_no": 19,
+            "office_name": "PS. Vedantnagar",
+            "email": "ps.vedantnagar@csnpolice.gov.in",
+            "mobile_no": "9226514031",
+            "role": "user",
+            "default_password": "PsVedantnagar@2024"
+        },
+        {
+            "sr_no": 20,
+            "office_name": "PS. Cidco",
+            "email": "ps.cidco@csnpolice.gov.in",
+            "mobile_no": "9226514032",
+            "role": "user",
+            "default_password": "PsCidco@2024"
+        },
+        {
+            "sr_no": 21,
+            "office_name": "PS. Midc Cidco",
+            "email": "ps.midccidco@csnpolice.gov.in",
+            "mobile_no": "9226514035",
+            "role": "user",
+            "default_password": "PsMidcCidco@2024"
+        },
+        {
+            "sr_no": 22,
+            "office_name": "PS. Harsul",
+            "email": "ps.harsul@csnpolice.gov.in",
+            "mobile_no": "9226514039",
+            "role": "user",
+            "default_password": "PsHarsul@2024"
+        },
+        {
+            "sr_no": 23,
+            "office_name": "PS. Jincy",
+            "email": "ps.jincy@csnpolice.gov.in",
+            "mobile_no": "9226514033",
+            "role": "user",
+            "default_password": "PsJincy@2024"
+        },
+        {
+            "sr_no": 24,
+            "office_name": "PS. Osmanpura",
+            "email": "ps.osmanpura@csnpolice.gov.in",
+            "mobile_no": "9226514037",
+            "role": "user",
+            "default_password": "PsOsmanpura@2024"
+        },
+        {
+            "sr_no": 25,
+            "office_name": "PS. Satara",
+            "email": "ps.satara@csnpolice.gov.in",
+            "mobile_no": "9226514038",
+            "role": "user",
+            "default_password": "PsSatara@2024"
+        },
+        {
+            "sr_no": 26,
+            "office_name": "PS. Pundliknagar",
+            "email": "ps.pundliknagar@csnpolice.gov.in",
+            "mobile_no": "9226514040",
+            "role": "user",
+            "default_password": "PsPundliknagar@2024"
+        },
+        {
+            "sr_no": 27,
+            "office_name": "PS. Jawaharnagar",
+            "email": "ps.jawaharnagar@csnpolice.gov.in",
+            "mobile_no": "9226514034",
+            "role": "user",
+            "default_password": "PsJawaharnagar@2024"
+        },
+        {
+            "sr_no": 28,
+            "office_name": "PS. Mukundwadi",
+            "email": "ps.mukundwadi@csnpolice.gov.in",
+            "mobile_no": "9226514036",
+            "role": "user",
+            "default_password": "PsMukundwadi@2024"
+        },
+        {
+            "sr_no": 29,
+            "office_name": "PS. Cyber",
+            "email": "ps.cyber@csnpolice.gov.in",
+            "mobile_no": "9226514017",
+            "role": "user",
+            "default_password": "PsCyber@2024"
+        },
+        {
+            "sr_no": 30,
+            "office_name": "Crime Branch",
+            "email": "crimebranch@csnpolice.gov.in",
+            "mobile_no": "9226514014",
+            "role": "admin",
+            "default_password": "CrimeBranch@2024"
+        },
+        {
+            "sr_no": 31,
+            "office_name": "ANC",
+            "email": "anc@csnpolice.gov.in",
+            "mobile_no": "9684702002",
+            "role": "admin",
+            "default_password": "Anc@2024"
+        },
+        {
+            "sr_no": 32,
+            "office_name": "E.O.W.",
+            "email": "eow@csnpolice.gov.in",
+            "mobile_no": "9226514016",
+            "role": "admin",
+            "default_password": "Eow@2024"
+        },
+        {
+            "sr_no": 33,
+            "office_name": "Damini",
+            "email": "damini@csnpolice.gov.in",
+            "mobile_no": "9225588492",
+            "role": "admin",
+            "default_password": "Damini@2024"
+        },
+        {
+            "sr_no": 34,
+            "office_name": "Special Branch",
+            "email": "specialbranch@csnpolice.gov.in",
+            "mobile_no": "9226514015",
+            "role": "admin",
+            "default_password": "SpecialBranch@2024"
+        },
+        {
+            "sr_no": 35,
+            "office_name": "Control Room",
+            "email": "controlroom@csnpolice.gov.in",
+            "mobile_no": "9684702001",
+            "role": "admin",
+            "default_password": "ControlRoom@2024"
+        },
+        {
+            "sr_no": 36,
+            "office_name": "CCC",
+            "email": "ccc@csnpolice.gov.in",
+            "mobile_no": "8421031573",
+            "role": "admin",
+            "default_password": "Ccc@2024"
+        },
+        {
+            "sr_no": 37,
+            "office_name": "Chawani Traffic Division",
+            "email": "traffic.chawani@csnpolice.gov.in",
+            "mobile_no": "9226514044",
+            "role": "user",
+            "default_password": "TrafficChawani@2024"
+        },
+        {
+            "sr_no": 38,
+            "office_name": "Waluj Traffic Division",
+            "email": "traffic.waluj@csnpolice.gov.in",
+            "mobile_no": "9226514045",
+            "role": "user",
+            "default_password": "TrafficWaluj@2024"
+        },
+        {
+            "sr_no": 39,
+            "office_name": "Cidco Traffic Division",
+            "email": "traffic.cidco@csnpolice.gov.in",
+            "mobile_no": "9226514043",
+            "role": "user",
+            "default_password": "TrafficCidco@2024"
+        },
+        {
+            "sr_no": 40,
+            "office_name": "City-1 Traffic Division",
+            "email": "traffic.city1@csnpolice.gov.in",
+            "mobile_no": "9226514041",
+            "role": "user",
+            "default_password": "TrafficCity1@2024"
+        },
+        {
+            "sr_no": 41,
+            "office_name": "City-2 Traffic Division",
+            "email": "traffic.city2@csnpolice.gov.in",
+            "mobile_no": "9226514042",
+            "role": "user",
+            "default_password": "TrafficCity2@2024"
+        }
+    ]
+}
