@@ -56,7 +56,7 @@ const getDivision = async (req, res, next) => {
   let divisions;
 
   try {
-    divisions = await Division.find({}).sort({ createdAt: -1 });
+    divisions = await Division.find({}).populate("zone").sort({ createdAt: -1 });
 
     res.status(200).json({ divisions });
   } catch (err) {

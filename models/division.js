@@ -10,6 +10,7 @@ const DivisionSchema = new Schema(
     acp_name: { type: String },
     acp_name_in_marathi: { type: String },
     acp_contact: { type: String },
+    zone: { type: mongoose.Schema.Types.ObjectId, ref: "Zone" },
   },
   {
     timestamps: true,
